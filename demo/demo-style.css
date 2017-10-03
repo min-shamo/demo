@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+#div1,#div2{
+	width: auto;
+	height: auto;
+	border: 1px solid #000;
+	text-align: center;
+	background-color: aliceblue;
+}
+#p1{
+	margin: 0;
+	height: 30px;
+	line-height: 30px; 
+	color: white; 
+	background-color: #2B10D8;
+}
+span{
+	font-size: 10px;
+}
+#register{
+	color: dodgerblue;
+	cursor: pointer;
+}

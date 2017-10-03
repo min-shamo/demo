@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册</title>
+<link href="demo-style.css" type="text/css" rel="stylesheet">
+<script src="../jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div id="div2">
+  <p id="p1">用户注册</p>
+  <div class="int">
+    <label>用&ensp;户&ensp;名：</label>
+    <input type="text" id="username" class="required" value="">
+    <strong style="color: red">*</strong></div>
+  <div class="int">
+    <label>输入密码：</label>
+    <input type="password" id="password" class="required" value="">
+    <strong style="color: red">*</strong></div>
+  <div class="int">
+    <label>确认密码：</label>
+    <input type="password" id="password-check" class="required" value="">
+    <strong style="color: red">*</strong></div>
+  <div class="int">
+    <label>邮&emsp;&emsp;箱：</label>
+    <input type="email" id="email" class="required" value="">
+    <strong style="color: red">*</strong></div>
+    <input type="submit" value="注册">
+
+</div>
+<script>
+	$("div :input").blur(function(){
+		var $parent=$(this).parent();
+		$parent.find(".formtips").remove();
+		if($(this).is("#username")){
+			if(this.value=="" || this.value.length<6)
+				{
+					var error="请输入至少6位的用户名";
+					$parent.append('<span class="formtips onError">'+error+'</span>');
+				}
+			else{
+				var ok="输入正确";
+				$parent.append('<span class="formtips onSuccess">'+ok+'</span>');
+			}
+		}
+	})
+</script>
+</body>
+</html>

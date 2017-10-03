@@ -3,13 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>登录/注册</title>
+<link href="demo-style.css" type="text/css" rel="stylesheet">
+<script src="../jquery-3.2.1.min.js"></script>
 </head>
-<style>
-	body{text-align: center}
-	#div1{width: 300px;height: 170px;border: 1px solid #000;margin:0 auto; background-color: aqua;}
-	p{text-align: center}
-	#p1{margin: 0;height: 30px;line-height: 30px; color: white; background-color: #2B10D8}
-</style>
 <body>
 <div id="div1">
   <p id="p1">用户登录</p>
@@ -19,7 +15,14 @@
   <p>密&emsp;码：
     <input type="password" value="">
   </p>
-  <p><input type="button" value="注册">&emsp;&emsp;<input type="button" value="登录"></p>
+  <p><input type="submit" value="登录">&emsp;<span>还没有账户？ 去<span id="register">注册</span></span></p>
 </div>
+<script>
+	$(function(){
+		$("#register").click(function(){
+			window.location.href="demo-register.html";
+		})
+	})
+</script>
 </body>
 </html>
