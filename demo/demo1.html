@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>动画</title>
+<style type="text/css">
+	body, div, span{
+		margin: 0;
+		padding: 0;
+	}
+	#div1{
+		height: 200px;
+		width: 200px;
+		position: relative;
+		left: -200px;
+		top: 0;
+		background: blue;
+	}
+	#div1 span{
+		height: 50px;
+		width: 20px;
+		background: red;
+		position: absolute;
+		left: 200px;
+		top: 75px;
+		text-align: center;
+		line-height: 25px;
+	}
+</style>
+<script  type="text/javascript">
+	window.onload=function(){
+		var odiv=document.getElementById("div1");
+		odiv.onmouseover=function(){
+			move(0);
+		}
+		odiv.onmouseout=function(){
+			move(-200);
+		}
+	}
+	var time=null;
+	function move(target){
+		clearInterval(time);
+		var odiv=document.getElementById("div1");
+		time=setInterval(function(){
+			var speed=0;
+			speed=(target-odiv.offsetLeft)/20;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			if(odiv.offsetLeft==target){
+				clearInterval(time);
+			}
+			else{ 
+			    odiv.style.left=odiv.offsetLeft+speed+'px';
+			}	
+		},30)
+	}
+</script>
+</head>
+
+<body>
+<div>
+	<div id="div1"><span id="share">分享</span></div>
+</div>
+</body>
+</html>

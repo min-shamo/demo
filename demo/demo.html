@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>demo</title>
+</head>
+<script type="text/javascript">
+	function num(n)
+	{
+		var show=document.getElementById("show");
+		show.value=show.value+n.value;
+    }
+	function C()
+	{
+		var show=document.getElementById("show");
+		show.value="";
+    }
+	function del()
+	{
+		var show=document.getElementById("show");
+		var l=show.value.length;
+		show.value=show.value.substring(0,l-1);
+	}
+	function v()
+	{
+		var show=document.getElementById("show");
+		var arr=show.value.split(/[+\-*/]/);
+		var num=0;
+		for(var i=0;i<arr.length;i++)
+		{
+		    arr[i]=parseFloat(arr[i]);
+			num=num+arr[i];	
+		}
+		show.value=num;
+	}
+</script>
+<body>
+<div style="margin: auto; height: auto; width: 340px; border: 1px solid #000">
+    <div style="height: 20px; width: auto; margin: 20px;">
+	    <input id="show" class="show" type="text" value="" style="width: 300px;">
+    </div>
+    <div>
+    	<input class="C" type="button" value="C" onclick="C()" style="height: 50px; width: 16%; margin-left: 20px">
+    	<input class="del" type="button" value="del" onclick="del()" style="height: 50px; width: 16%; margin-left: 20px">
+    	<input class="none" type="button" value=" " style="height: 50px; width: 16%; margin-left: 20px">
+    	<input class="/" type="button" value="/" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px">
+    	<input class="7" type="button" value="7" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="8" type="button" value="8" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="9" type="button" value="9" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="*" type="button" value="*" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="4" type="button" value="4" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="5" type="button" value="5" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="6" type="button" value="6" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="-" type="button" value="-" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="1" type="button" value="1" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="2" type="button" value="2" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="3" type="button" value="3" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="+" type="button" value="+" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="%" type="button" value="%" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px; margin-bottom: 20px">
+    	<input class="0" type="button" value="0" onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="." type="button" value="." onclick="num(this)" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    	<input class="=" type="button" value="=" onclick="v()" style="height: 50px; width: 16%; margin-left: 20px; margin-top: 20px">
+    </div>
+</div>
+</body>
+</html>
