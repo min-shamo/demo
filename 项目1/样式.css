@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* CSS Document */
+    #header{
+        font-size: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+        line-height: 100px;
+        background-color:#B82D28;
+        height: 100px;
+        font-family: 微软雅黑;
+    }
+    #neck{
+        height: 40px;
+        margin-top: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color:#B82D28;      
+    }
+    .button1{
+        height: 40px;
+        width: 155px;
+        background-color: #B82D28;
+        color: white;
+		float: left;
+    }
+    #imagenew{
+        height: 400px;
+        width: 45%;
+        margin-left: 20px;
+        margin-top: 10px;
+        float: left;
+		border: 1px solid #000;
+    }
+    #dynamiclist{
+        height: 400px;
+        width: 50%;
+        border: 1px solid #000;
+        float: right;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
+    #teacher{
+        height: 400px;
+        width: 50%;
+        border: 1px solid #000;
+        float: left;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    #socialimage{
+        height: 400px;
+        width: 44%;
+        border: 1px solid #000;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        float: right;
+    }  
+    #educationtopic{
+        height: 500px;
+        background-color: #A6CA03;
+        clear: both;
+        margin-left: 20px;
+        margin-right: 20px;
+        }
+    #title{
+        height: 260px;
+        font-size: 40px;
+        background-color: #B82D28;
+        color: white;
+        text-align: center;
+        width: 50px;
+        float: left;
+        margin-left: 20px;
+        align-content: center;
+        margin-top: 120px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    #copyright{
+    height: 80px;
+    border: 1px solid #000;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    }
+    .educationtopic{
+        height: 220px;
+        background-color: white;
+        margin-top: 20px;
+        width: 45%;
+        float: left;
+        margin-left: 20px;        
+    } 
+    .new{
+        font-size: 20px;
+    }
+    span1{
+		color:white;
+		font-size: 30px;
+	}
+	span2{
+		color:white;
+		font-size: 20px;
+	}
+span3{
+	color:red;
+	font-size: 20px;
+}
+.div{
+	height: auto;
+	margin: 20px;
+	border: 1px solid #000;
+}
