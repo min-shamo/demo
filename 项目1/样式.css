@@ -14,14 +14,17 @@
         margin-top: 10px;
         margin-left: 20px;
         margin-right: 20px;
+		text-align: center;
         background-color:#B82D28;      
     }
     .button1{
-        height: 40px;
-        width: 155px;
-        background-color: #B82D28;
+        width: 13%;
         color: white;
+		line-height: 10px;
+		cursor: pointer;
+		text-align: center;
 		float: left;
+
     }
     #imagenew{
         height: 400px;
@@ -97,6 +100,7 @@
     } 
     .new{
         font-size: 20px;
+		cursor: pointer;
     }
     span1{
 		color:white;

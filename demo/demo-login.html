@@ -2,21 +2,22 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>登录/注册</title>
+<title>登录</title>
 <link href="demo-style.css" type="text/css" rel="stylesheet">
 <script src="../jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <div id="div1">
   <p id="p1">用户登录</p>
-  <p>用户名：
+  <div class="int">用户名：
     <input id="user" type="text" value="">
-  </p>
-  <p>密&emsp;码：
+  </div>
+  <div class="int">密&emsp;码：
     <input type="password" value="">
-  </p>
-  <p><input type="submit" value="登录">&emsp;<span>还没有账户？ 去<span id="register">注册</span></span></p>
-</div>
+  </div>
+  <div class="int-btn">
+  <input type="submit" value="登录">&emsp;<span>还没有账户？ 去<span id="register">注册</span></span></div>
+  </div>
 <script>
 	$(function(){
 		$("#register").click(function(){

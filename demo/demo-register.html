@@ -25,7 +25,9 @@
     <label>邮&emsp;&emsp;箱：</label>
     <input type="email" id="email" class="required" value="">
     <strong style="color: red">*</strong></div>
+  <div class="int-btn">
     <input type="submit" value="注册">
+  </div>
 
 </div>
 <script>
@@ -35,11 +37,44 @@
 		if($(this).is("#username")){
 			if(this.value=="" || this.value.length<6)
 				{
-					var error="请输入至少6位的用户名";
+					var error=" 请输入至少6位的用户名";
 					$parent.append('<span class="formtips onError">'+error+'</span>');
 				}
 			else{
-				var ok="输入正确";
+				var ok=" 输入正确";
+				$parent.append('<span class="formtips onSuccess">'+ok+'</span>');
+			}
+		}
+		if($(this).is("#password")){
+			if(this.value=="" || this.value.length<8)
+				{
+					var error=" 请输入至少8位的密码";
+					$parent.append('<span class="formtips onError">'+error+'</span>');
+				}
+			else{
+				var ok=" 输入正确";
+				$parent.append('<span class="formtips onSuccess">'+ok+'</span>');
+			}
+		}
+		if($(this).is("#password-check")){
+			if(this.value=="" || this.value!=$parent.parent().find("#password").val())
+				{
+					var error=" 两次密码不相同";
+					$parent.append('<span class="formtips onError">'+error+'</span>');
+				}
+			else{
+				var ok=" 输入正确";
+				$parent.append('<span class="formtips onSuccess">'+ok+'</span>');
+			}
+		}
+		if($(this).is("#email")){
+			if(this.value=="" || (this.value!="" && !/.+@.+\.[a-zA-Z] {2.4}$/.test(this.value)))
+				{
+					var error=" 请输入邮箱";
+					$parent.append('<span class="formtips onError">'+error+'</span>');
+				}
+			else{
+				var ok=" 输入正确";
 				$parent.append('<span class="formtips onSuccess">'+ok+'</span>');
 			}
 		}
