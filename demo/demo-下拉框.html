@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>下拉框</title>
+<style type="text/css">
+body {
+	text-align: center;
+}
+.main {
+	position: absolute;
+	left: 500px;
+	border: 1px solid #000;
+	background-color: aquamarine;
+}
+.sec {
+	margin: 10px;
+	width: 100px;
+	height: 150px;
+	float: left;
+}
+	.btn{
+		width: 30px;
+		margin-top: 10px;
+	}
+</style>
+<script src="../jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+<div class="main">
+    <p>选择你喜欢的项目</p>
+    <select multiple class="sec" id="select">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+    </select>
+    <div style="float: left;margin-top: 10px">
+        <input class="btn" type="button" value=">>"><br>
+        <input class="btn" type="button" value=">|"><br>
+        <input class="btn" type="button" value="<<"><br>
+        <input class="btn" type="button" value="|<">
+    </div>
+    <select multiple class="sec" id="selected">
+    </select>
+</div>
+<script>
+	$("div>input").click(function(){
+		if($(this).val()==">>")
+			{
+				var $option=$("#select>option:selected");
+				$option.appendTo("#selected");
+			}
+		if($(this).val()==">|")
+			{
+				var $option=$("#select>option");
+				$option.appendTo("#selected");
+			}	
+		if($(this).val()=="<<")
+			{
+				var $option=$("#selected>option:selected");
+				$option.appendTo("#select");
+			}
+		if($(this).val()=="|<")
+			{
+				var $option=$("#selected>option");
+				$option.appendTo("#select");
+			}
+	})
+</script>
+</body>
+</html>
