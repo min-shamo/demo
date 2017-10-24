@@ -5,8 +5,9 @@
  *
  */
 var TETRIS_ROWS = 20;
-var TETRIS_COLS = 14;
+var TETRIS_COLS = 18;
 var CELL_SIZE = 24;
+var rand1 = -1;
 // 没方块是0
 var NO_BLOCK = 0;
 var tetris_canvas;
@@ -90,8 +91,14 @@ var blockArr = [
 ];
 // 定义初始化正在下掉的方块
 var initBlock = function()
-{
-	var rand = Math.floor(Math.random() * blockArr.length);
+{	
+	if(rand1==-1)
+	{
+		var rand = Math.floor(Math.random() * blockArr.length);
+	}	
+	else{
+		rand=rand1;
+	}	
 	// 随机生成正在下掉的方块
 	currentFall = [
 		{x: blockArr[rand][0].x , y: blockArr[rand][0].y
@@ -103,6 +110,7 @@ var initBlock = function()
 		{x: blockArr[rand][3].x , y: blockArr[rand][3].y 
 			, color: blockArr[rand][3].color}
 	];
+	nextBlock();
 };
 // 定义一个创建canvas组件的函数
 var createCanvas = function(rows , cols , cellWidth, cellHeight)
@@ -195,7 +203,111 @@ window.onload = function()
 	initBlock();
 	// 控制每隔固定时间执行一次向下”掉“
 	curTimer = setInterval("moveDown();" ,  500 / curSpeed);
+	
+	
 }
+//next方块函数
+var nextBlock=function()
+{
+	var tetris_next=document.getElementById("next");
+	var tetris_ctx1=tetris_next.getContext('2d');
+	var blockArr_next = [
+		// 代表第一种可能出现的方块组合：Z
+		[
+			{x: 4 / 2 - 1 , y:0 , color:1},
+			{x: 4 / 2 , y:0 ,color:1},
+			{x: 4/ 2 , y:1 ,color:1},
+			{x: 4 / 2 + 1 , y:1 , color:1}
+		],
+		// 代表第二种可能出现的方块组合：反Z
+		[
+			{x: 4 / 2 + 1 , y:0 , color:2},
+			{x: 4 / 2 , y:0 , color:2},
+			{x: 4 / 2 , y:1 , color:2},
+			{x: 4 / 2 - 1 , y:1 , color:2}
+		],
+		// 代表第三种可能出现的方块组合： 田
+		[
+			{x: 4 / 2 - 1 , y:0 , color:3},
+			{x: 4 / 2 , y:0 ,  color:3},
+			{x: 4 / 2 - 1 , y:1 , color:3},
+			{x: 4 / 2 , y:1 , color:3}
+		],
+		// 代表第四种可能出现的方块组合：L
+		[
+			{x: 4 / 2 - 1 , y:0 , color:4},
+			{x: 4 / 2 - 1, y:1 , color:4},
+			{x: 4 / 2 - 1 , y:2 , color:4},
+			{x: 4 / 2 , y:2 , color:4}
+		],
+		// 代表第五种可能出现的方块组合：J
+		[
+			{x: 4 / 2  , y:0 , color:5},
+			{x: 4 / 2 , y:1, color:5},
+			{x: 4 / 2  , y:2, color:5},
+			{x: 4 / 2 - 1, y:2, color:5}
+		],
+		// 代表第六种可能出现的方块组合 : 条
+		[
+			{x: 4 / 2 , y:0 , color:6},
+			{x: 4 / 2 , y:1 , color:6},
+			{x: 4 / 2 , y:2 , color:6},
+			{x: 4 / 2 , y:3 , color:6}
+		],
+		// 代表第七种可能出现的方块组合 : ┵
+		[
+			{x: 4 / 2 , y:0 , color:7},
+			{x: 4/ 2 - 1 , y:1 , color:7},
+			{x: 4 / 2 , y:1 , color:7},
+			{x: 4 / 2 + 1, y:1 , color:7}
+		]
+	];
+	tetris_ctx1.clearRect(0,0,tetris_next.width,tetris_next.height);
+	rand1 = Math.floor(Math.random() * blockArr.length);
+	currentFall_next = [
+		{x: blockArr_next[rand1][0].x , y: blockArr_next[rand1][0].y
+			, color: blockArr_next[rand1][0].color},
+		{x: blockArr_next[rand1][1].x , y: blockArr_next[rand1][1].y
+			, color: blockArr_next[rand1][1].color},
+		{x: blockArr_next[rand1][2].x , y: blockArr_next[rand1][2].y
+			, color: blockArr[rand1][2].color},
+		{x: blockArr_next[rand1][3].x , y: blockArr_next[rand1][3].y 
+			, color: blockArr_next[rand1][3].color}
+	];
+	for (var i = 0 ; i < currentFall_next.length ; i++)
+	{
+		var cur = currentFall_next[i];
+		// 设置填充颜色
+		tetris_ctx1.fillStyle = colors[cur.color];
+		// 绘制矩形
+		tetris_ctx1.fillRect(cur.x * 56+ 1 
+			, cur.y * 36 + 1 , 54 - 2 , 36 - 2);
+	}
+}
+//重新开始函数
+var reset=function()
+{
+	localStorage.removeItem("curScore");
+	localStorage.removeItem("tetris_status");
+	localStorage.removeItem("curSpeed");
+	document.location.reload();
+}
+//停止函数
+var stop=function()
+	{
+		var stop_btn=document.getElementById("con");
+		if(stop_btn.value=="暂停")
+		{
+			clearInterval(curTimer);
+			stop_btn.value="继续";
+		}
+		else
+		{
+			curTimer = setInterval("moveDown();" ,  500 / curSpeed);
+			stop_btn.value="暂停";
+		}
+		
+	}
 // 判断是否有一行已满
 var lineFull = function()
 {
@@ -307,7 +419,7 @@ var moveDown = function()
 				localStorage.removeItem("curScore");
 				localStorage.removeItem("tetris_status");
 				localStorage.removeItem("curSpeed");
-				if(confirm("您已经输了！是否参数排名？"))
+				if(confirm("您已经输了！是否参与排名？"))
 				{
 					// 读取Local Storage里的maxScore记录
 					maxScore = localStorage.getItem("maxScore");

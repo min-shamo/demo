@@ -28,15 +28,22 @@
 
 <body>
 	<h2>疯狂俄罗斯方块</h2>
-	<div style="width:336px;border:1px solid black;background:#ff9;">&nbsp;
-		<div style="float:left;">速度:
-			<span id="curSpeedEle"></span>
-			当前积分:
-			<span id="curScoreEle"></span>
+	<div>
+		<div style="width:336px;height:96px;float:left;border:1px solid black;background:#ff9;">&nbsp;
+			<div style="float:left;">速度:
+				<span id="curSpeedEle"></span>
+				当前积分:
+				<span id="curScoreEle"></span>
+			</div>
+			<div style="float:right;">最高积分:
+				<span id="maxScoreEle"></span>
+			</div>
+			<div style="margin-top:20px;">
+				<input id="reset" type="button" value="重新开始" style="width:50%;height:30px;float:left;" onclick="reset();">
+				<input id="con" type="button" value="暂停" style="width:50%;height:30px;float:right;" onclick="stop();">
+			</div>
 		</div>
-		<div style="float:right;">最高积分:
-			<span id="maxScoreEle"></span>
-		</div>
+		<canvas id="next" style="width:96px;height:96px;border:1px solid black;"></canvas>
 	</div>
 </body>
 
