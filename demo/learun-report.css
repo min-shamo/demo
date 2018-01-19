@@ -1,0 +1,61 @@
+﻿.ui-report{display:inline-block;width:100%;position: relative;}
+.ui-report .grid-wrap{background: #fff;padding: 18px;margin-right:18px;box-shadow: 0 1px 3px rgba(0,0,0,0.2);border: 1px solid #cfcfcf;clear: both;}
+.ui-report .ui-jqgrid .ui-jqgrid-view th,
+.ui-report .ui-jqgrid .ui-jqgrid-view td,
+.ui-report .ui-jqgrid .ui-jqgrid-view div{border-color: #ccc;}
+.ui-report .ui-jqgrid .ui-jqgrid-hdiv,
+/*.ui-report .ui-jqgrid .ui-jqgrid-htable th{background: #fff;border:1px solid #fff}*/
+.ui-report .ui-jqgrid .ui-jqgrid-htable th{background:rgba(87,159,233,0.15)}
+.ui-report .ui-jqgrid .ui-jqgrid-pager{background: #fff;}
+.ui-report .ui-widget-content{border:none;}
+.ui-report .ui-jqgrid .ui-jqgrid-btable{*margin-top: -1px;}
+.ui-report .ui-jqgrid{border:1px solid #ccc;}
+.ui-report .ui-jqgrid .ui-jqgrid-sdiv{border-top: 1px solid #ccc;}
+.ui-report .ui-jqgrid tr.footrow-ltr td {border-right: 1px solid #ccc;}
+.ui-report .ui-jqgrid .frozen-div{background:#fff !important;}
+.ui-report .ui-jqgrid .frozen-div .ui-jqgrid-resize-ltr{margin: 0 -2px 0 0px;}
+.ui-report .ui-jqgrid .frozen-bdiv table{background:#fff}
+.ui-report .ui-jqgrid tr.ui-row-ltr td{/*修改为可换行*//*word-break: normal;word-wrap: normal;white-space: pre;*/}
+.ui-report .titlePanel{padding: 0;margin: 0 0px 5px 0;border: 1px solid #cfcfcf;box-shadow: 0 1px 3px rgba(0,0,0,0.2);}
+.ui-report .gridPanel,.ui-report .tablePanel {background: #fff;padding: 15px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);border: 1px solid #cfcfcf;}
+.ui-report .grid-title,.ui-report .table-title{font-size: 22px;text-align:center;width:100%;color: #444;}
+.ui-report .grid-subtitle,.ui-report .table-subtitle{width:100%;text-align:left;padding: 5px 0;}
+
+/*added by Cathy 增加报表多个表格Grid排列样式*/
+.ui-report .mulPanel .multBase{margin: 15px;}
+.ui-report .mulPanel .multBase  tr td{padding:5px 5px 5px 10px}
+.ui-report .mulgridPanel,.ui-report .mulPanel{background:#fff;padding:0 0;box-shadow: 0 1px 3px rgba(0,0,0,0.2);border: 1px solid #cfcfcf;margin-bottom: 5px;}
+.ui-report .mulgrid-title,.ui-report .mulbase-title { background-color: #f9f9f9;font-weight:bold; font-size : 16px;text-align: left; width: 100%;color: #444;padding: 8px 0px 8px 15px;border-bottom: 1px solid #cfcfcf;}
+.ui-report .mulgridPanel .ui-jqgrid {border:none}
+.ui-report .mulgridPanel .unwritten{ /*background:none; padding: 30px 0 30px 0px;font-size:24px*/}
+
+/*added by Cathy 增加报表表格样式tablePanel，非Grid*/
+.ui-report .tablePanel  .table-subtitle {overflow: auto;}
+.ui-report .tablePanel  .subtitle-item  {float: left;width: 33%;}
+.ui-report .tablePanel   .nowrap  { white-space: nowrap;} 
+.ui-report .ui-table   {width:100%;border-top: 1px solid #e6e6e6;border-left: 1px solid #e6e6e6;}
+.ui-report .ui-table tr td  { height: 32px;/*width: 24px;*/border-bottom: 1px solid #e6e6e6;border-right: 1px solid #e6e6e6;}
+.ui-report .ui-table tr th   {border-bottom: 1px solid #e6e6e6;border-right: 1px solid #e6e6e6;padding: 4px 2px;}
+.ui-report .ui-table  .center{text-align:center}
+
+
+
+@media print{@page{margin:.5cm;}
+*{background:transparent !important;color:#333 !important;box-shadow:none !important;text-shadow:none !important;filter:0 !important;-ms-filter:0 !important;}
+thead{display:table-header-group;}
+tr,td,img{page-break-inside:avoid;}
+h2,h3{page-break-after:avoid;}
+p,h2,h3{orphans:3;widows:3;}
+.ui-table-print .grid-title{font-size: 22px;text-align:center;width:100%;color: #444;}
+.ui-table-print .grid-subtitle{width:100%;text-align:left;padding: 5px 0;}
+.ui-jqgrid .ui-jqgrid-bdiv, .ui-jqgrid .ui-jqgrid-bdiv > div{height: auto !important;}
+.ui-print .ui-jqgrid .ui-jqgrid-pager{display: none;}
+.ui-table-print{width: 100%;border-collapse: collapse;border-spacing: 0;font-size: 12px;margin: 1px -1px 0 1px;border: 1px solid #666;}
+.ui-table-print th,
+.ui-table-print td{padding: 5px 2px;border: 1px solid;border-color: #666 !important;height: auto !important;vertical-align: top;color: #444;}
+.ui-table-print th{text-align: center;vertical-align: middle;  font-weight: normal;}
+.ui-table-print .jqgrid-rownum{width: auto !important;}
+.ui-table-print .jqg-first-row-header{display: none;}
+.ui-table-print .ui-th-column-header{border-top: 1px solid !important;}
+.ui-area-print{width: 100% !important;border-collapse: collapse;border-spacing: 0;font-size: 12px;margin: 1px -1px 0 1px;border: 1px solid #666;}
+

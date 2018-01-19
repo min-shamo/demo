@@ -1,0 +1,35 @@
+<!Doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>CSS3 Grid</title>
+    <style type="text/css">
+div{
+    width: 400px;
+    height: 400px;
+    margin: 40px;
+    border: 1px solid;
+}
+.grid{
+    background: 
+    -webkit-linear-gradient(top, transparent 39px, blue 40px), 
+    -webkit-linear-gradient(left, transparent 39px, blue 40px);
+    -webkit-background-size: 40px 40px;
+    -moz-background-size: 40px 40px;
+    background-size: 40px 40px;
+}
+.grid2{
+    background: 
+    -webkit-linear-gradient(top, transparent 39px, blue 39px, blue 40px,transparent 40px, transparent 79px, red 80px), 
+    -webkit-linear-gradient(left, transparent 39px, orange 39px, orange 40px,transparent 40px, transparent 79px, green 80px);
+    -webkit-background-size: 80px 80px;
+    -moz-background-size: 80px 80px;
+    background-size: 80px 80px;
+}
+    </style>
+</head>
+<body>
+<div class="grid"></div>
+<div class="grid2"></div>
+</body>
+</html>

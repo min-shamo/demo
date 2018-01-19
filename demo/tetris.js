@@ -87,7 +87,14 @@ var blockArr = [
 		{x: TETRIS_COLS / 2 - 1 , y:1 , color:7},
 		{x: TETRIS_COLS / 2 , y:1 , color:7},
 		{x: TETRIS_COLS / 2 + 1, y:1 , color:7}
-	]
+	],
+	/*// 代表第八种可能出现的方块组合 : -|
+	[
+		{x: TETRIS_COLS / 2 , y:0 , color: 8},
+		{x: TETRIS_COLS / 2 -1 , y:1 , color: 8},
+		{x: TETRIS_COLS / 2 , y:1 , color: 8},
+		{x: TETRIS_COLS / 2 , y:2 , color: 8}
+	]*/
 ];
 // 定义初始化正在下掉的方块
 var initBlock = function()
@@ -202,7 +209,7 @@ window.onload = function()
 	// 初始化正在下掉的方块
 	initBlock();
 	// 控制每隔固定时间执行一次向下”掉“
-	curTimer = setInterval("moveDown();" ,  500 / curSpeed);
+	curTimer = setInterval("moveDown();" ,  500-(curSpeed*50));
 	
 	
 }

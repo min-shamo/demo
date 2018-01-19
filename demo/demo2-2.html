@@ -1,0 +1,89 @@
+<!Doctype html>
+<html>
+
+<head>
+    <title>demo2-2</title>
+    <style>
+        div {
+            height: 50px;
+            background-color: green;
+            margin: 10px;
+            
+        }
+
+        .gradient-1 {
+            display: none;            
+            background-image: radial-gradient(yellow, green);
+        }
+
+        .gradient-2 {
+            display: none;       
+            background-image: radial-gradient(ellipse at center, yellow 0%, green 100%);
+        }
+
+        .gradient-3 {
+            display: none;       
+            background-image: radial-gradient(farthest-corner at 50% 50%, yellow, green);
+        }
+
+        .gradient-4 {
+            display: none;       
+            background-image: radial-gradient(ellipse farthest-corner at 50% 50%, yellow, green);
+        }
+
+        .gradient-5 {
+            display: none;       
+            background-image: radial-gradient(circle closest-side at 30% 50%, yellow, green);
+        }
+
+        .gradient-6 {
+            display: none;       
+            background-image: radial-gradient(circle farthest-side at 30% 50%, yellow, green);
+        }
+
+        .gradient-7 {
+            display: none;       
+            background-image: radial-gradient(circle closest-corner at 30% 50%, yellow, green);
+        }
+
+        .gradient-8 {
+            display: none;       
+            background-image: radial-gradient(circle farthest-corner at 30% 50%, yellow, green);
+        }
+
+        .repeat-linear {
+            display: none;       
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid blue;
+            float: left;
+            background-image: repeating-linear-gradient( 45deg, white, white 10px, red 10px, red 20px);
+        }
+
+        .repeat-radial {
+            display: none;       
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border: 1px solid blue;
+            float: left;
+            background: repeating-radial-gradient( circle at bottom left, white, white 10px, red 10px, red 20px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gradient-1"></div>
+    <div class="gradient-2"></div>
+    <div class="gradient-3"></div>
+    <div class="gradient-4"></div>
+    <div class="gradient-5"></div>
+    <div class="gradient-6"></div>
+    <div class="gradient-7"></div>
+    <div class="gradient-8"></div>
+    <div class="repeat-linear"></div>
+    <div class="repeat-radial"></div>
+</body>
+
+</html>
