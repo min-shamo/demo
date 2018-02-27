@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <title>NumGame</title>
+    <style>
+        .main {
+            width: 400px;
+            height: 500px;
+            border: 1px solid #000;
+            text-align: center;
+            position: relative;
+            left: 40%;
+            top: 20px;
+            background: linear-gradient(rgb(90, 135, 218), rgb(41, 200, 221))
+        }
+
+        .in {
+            margin-bottom: 10px;
+        }
+        .in button{
+            margin-top: 10px;
+            width: 100px;
+            height: 30px;
+        }
+        .out {
+            width: 250px;
+            height: 250px;
+            background: #fff;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        .out span{
+            font-size: 20px;
+            color:#999;
+        }
+        .out label{
+            display: block;
+        }
+        .input:last-child {
+            border-right: 1px solid #999;
+        }
+        .input{
+            margin-top: 10px;
+            font-size: 0;
+        }
+        .input input {
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+            border-left: 1px solid #999;
+            width: 45px;
+            height: 45px;
+            outline: none;
+            font-family: inherit;
+            font-size: 28px;
+            font-weight: inherit;
+            text-align: center;
+            line-height: 45px;
+            color: #666;
+            background: #fff;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h3>猜数字</h3>
+        <div class="in">
+            <span>请输入4位不同的数字：</span>
+            <div class="input">
+                <input type="tel" maxlength="1">              
+                <input type="tel" maxlength="1">                
+                <input type="tel" maxlength="1">               
+                <input type="tel" maxlength="1">                              
+            </div>
+            <button onclick="submit()">确定</button>
+            <button onclick="location.reload()">重新开始</button>
+        </div>
+        <div>
+            <span>结果：</span>
+            <div class="out">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var num=[];
+        $(function(){  
+            focus();        
+            while(num.length<4)
+            {
+                var temp=parseInt(Math.random()*10);
+                if(num.indexOf(temp)==-1){
+                    num.push(temp)
+                }
+            }
+            console.log(num);
+        })
+        function submit(){           
+            var arr=[];
+            for(var i=0;i<4;i++)
+            {
+                arr[i]=parseInt($('.input').find('input').eq(i).val());
+            }
+            console.log(arr);
+            if(arr[0]==num[0]&&arr[1]==num[1]&&arr[2]==num[2]&&arr[3]==num[3])
+            {
+                alert("恭喜你猜对了！");
+                $('.out').append('<label><span>'+num+'</span></label>');
+            }else{
+                var A=0;
+                var B=0;
+                for(var j=0;j<4;j++)
+                {
+                    if(arr[j]==num[j]){
+                        A++;
+                    }else if(num.indexOf(arr[j])!==-1){
+                        B++;
+                    }
+                }
+                $('.out').append('<label><span>'+arr+'</span>&nbsp;&nbsp;<span>'+A+'A'+B+'B</span></label>');
+                $('.input').find('input').val("");
+                if($('.out').find('label').length==8){
+                    alert('很遗憾，你输了！');
+                    $('.out').append('<label><span>'+num+'</span></label>');
+                }
+                console.log(A,B);
+                focus();
+            }
+        }
+        function focus(){(function (window, document) {
+            var active = 0,
+                inputBtn = document.querySelectorAll('input');
+            for (var i = 0; i < inputBtn.length; i++) {
+                inputBtn[i].addEventListener('click', function () {
+                    inputBtn[active].focus();
+                }, false);
+                inputBtn[i].addEventListener('focus', function () {
+                    this.addEventListener('keyup', listenKeyUp, false);
+                }, false);
+                inputBtn[i].addEventListener('blur', function () {
+                    this.removeEventListener('keyup', listenKeyUp, false);
+                }, false);
+            }
+
+            /**
+             * 监听键盘的敲击事件
+             */
+            function listenKeyUp() {               
+                if (!isNaN(this.value) && this.value.length != 0) {
+                    if (active < 4) {
+                        active += 1;
+                    }
+                    inputBtn[active].focus();
+                } else if (this.value.length == 0) {
+                    if (active > 0) {
+                        active -= 1;
+                    }
+                    inputBtn[active].focus();
+                }              
+            }
+        })(window, document);
+        }
+
+    </script>
+</body>
+
+</html>
