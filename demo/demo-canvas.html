@@ -35,9 +35,9 @@
                         ctx.beginPath();
                         ctx.fillRect(tank.x, tank.y, 5, 30);//履带
                         ctx.fillRect(tank.x + 5, tank.y + 5, 20, 20);//车体
-                        ctx.fillRect(tank.x + 25, tank.y, 5, 30);//履带
-                        ctx.fillstyle = tank.color[1];
-                        ctx.arc(tank.x + 15, tank.y + 15, 9, 0, 360);//车盖
+                        ctx.fillRect(tank.x + 25, tank.y, 5, 30);//履带       
+                        ctx.arc(tank.x + 15, tank.y + 15, 7, 0, 360);//车盖
+                        ctx.fillStyle = tank.color[1];
                         ctx.fill();
                         ctx.strokeStyle = tank.color[1];
                         ctx.lineWidth = 1.5;
@@ -56,9 +56,9 @@
                         ctx.beginPath();
                         ctx.fillRect(tank.x, tank.y, 30, 5);//履带
                         ctx.fillRect(tank.x + 5, tank.y + 5, 20, 20);//车体
-                        ctx.fillRect(tank.x, tank.y + 25, 30, 5);//履带
-                        ctx.fillstyle = tank.color[1];
-                        ctx.arc(tank.x + 15, tank.y + 15, 9, 0, 360);//车盖
+                        ctx.fillRect(tank.x, tank.y + 25, 30, 5);//履带                       
+                        ctx.arc(tank.x + 15, tank.y + 15, 7, 0, 360);//车盖
+                        ctx.fillStyle = tank.color[1];
                         ctx.fill();
                         ctx.strokeStyle = tank.color[1];
                         ctx.lineWidth = 1.5;
@@ -114,32 +114,72 @@
             this.tank = Tank;
             this.tank(x, y, color, direct);
             this.count = 0;
+            this.isgo = false;
             //坦克移动
             this.run = function run() {
                 switch (this.direct) {
                     case 0:
-                        if (this.y + 30 < 500) {
+                        for (var i = 0; i < 5; i++) {
+                            if (this.y + 30 == 500 || (Math.abs(this.x - enmeyTank[i].x) < 30 && enmeyTank[i].y - this.y <= 30)) {
+                                this.isgo = false;
+                            } else {
+                                this.isgo = true;
+                            }
+                        }
+                        if (this.isgo) {
                             this.y += this.speed;
                         }
                         break;
                     case 1:
-                        if (this.y > 0) {
+                        for (var i = 0; i < 5; i++) {
+                            if (this.y == 0 || (Math.abs(this.x - enmeyTank[i].x) < 30 && this.y - enmeyTank[i].y <= 30)) {
+                                this.isgo = false;
+                            } else {
+                                this.isgo = true;
+                            }
+                        }
+                        if (this.isgo) {
                             this.y -= this.speed;
                         }
                         break;
                     case 2:
-                        if (this.x > 0) {
+                        for (var i = 0; i < 5; i++) {
+                            if (this.x == 0 || (Math.abs(this.y - enmeyTank[i].y) < 30 && this.x - enmeyTank[i].x <= 30)) {
+                                this.isgo = false;
+                            } else {
+                                this.isgo = true;
+                            }
+                        }
+                        if (this.isgo) {
                             this.x -= this.speed;
                         }
                         break;
                     case 3:
-                        if (this.x + 30 < 500) {
+                        for (var i = 0; i < 5; i++) {
+                            if (this.x + 30 == 500 || (Math.abs(this.y - enmeyTank[i].y) < 30 && enmeyTank[i].x - this.x <= 30)) {
+                                this.isgo = false;
+                            } else {
+                                this.isgo = true;
+                            }
+                        }
+                        if (this.isgo) {
                             this.x += this.speed;
                         }
                         break;
                 }
                 if (this.count > Math.round(Math.random() * 100)) {
-                    this.direct = Math.round(Math.random() * 3);//随机生成方向
+                    var num = Math.random() * 3;//随机生成方向
+                    if (num >= 0 && num < 0.75) {
+                        this.direct = 0;
+                    } else if (num >= 0.75 && num < 1.5) {
+                        this.direct = 1;
+                    } else if (num >= 1.5 && num < 2.25) {
+                        this.direct = 2;
+                    } else if (num >= 2.25 && num <= 3) {
+                        this.direct = 3;
+                    } else {
+                        this.direct = 0;
+                    }
                     this.count = 0;
                 }
                 this.count++;
