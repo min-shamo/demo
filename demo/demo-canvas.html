@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.2.1.min.js"></script>
+    <title>canvas</title>
+</head>
+
+<body>
+    <div>
+        <canvas id="MyCanvas" width="500px" height="500px" style="position:relative;top:50px;left:300px;background:#000"></canvas>
+    </div>
+    <script>
+        var c = document.getElementById("MyCanvas");
+        var ctx = c.getContext("2d");
+        var MyTankColor = ["#BA9658", "#FEF26E"];
+        var enmeyColor = ["#00A2B5", "#00FEFE"];
+        var MyTank = new MyTank(235, 450, MyTankColor, 1);
+        var enmeyTank = [];
+        for (var i = 0; i < 5; i++) {
+            enmeyTank[i] = new EnemyTank((i + 1) * 50, 0, enmeyColor, 0);
+            window.setInterval("enmeyTank[" + i + "].run()", 100)
+        }
+        Clear();
+        //绘制坦克
+        function draw(tank) {
+            if (tank.isalive) {
+                switch (tank.direct) {
+                    case 0://下
+                    case 1://上
+                        ctx.fillStyle = tank.color[0];
+                        ctx.beginPath();
+                        ctx.fillRect(tank.x, tank.y, 5, 30);//履带
+                        ctx.fillRect(tank.x + 5, tank.y + 5, 20, 20);//车体
+                        ctx.fillRect(tank.x + 25, tank.y, 5, 30);//履带
+                        ctx.fillstyle = tank.color[1];
+                        ctx.arc(tank.x + 15, tank.y + 15, 9, 0, 360);//车盖
+                        ctx.fill();
+                        ctx.strokeStyle = tank.color[1];
+                        ctx.lineWidth = 1.5;
+                        ctx.moveTo(tank.x + 15, tank.y + 15);
+                        if (tank.direct == 0) {
+                            ctx.lineTo(tank.x + 15, tank.y + 30)
+                        } else {
+                            ctx.lineTo(tank.x + 15, tank.y)
+                        }
+                        ctx.stroke();
+                        ctx.closePath();
+                        break;
+                    case 2://左
+                    case 3://右
+                        ctx.fillStyle = tank.color[0];
+                        ctx.beginPath();
+                        ctx.fillRect(tank.x, tank.y, 30, 5);//履带
+                        ctx.fillRect(tank.x + 5, tank.y + 5, 20, 20);//车体
+                        ctx.fillRect(tank.x, tank.y + 25, 30, 5);//履带
+                        ctx.fillstyle = tank.color[1];
+                        ctx.arc(tank.x + 15, tank.y + 15, 9, 0, 360);//车盖
+                        ctx.fill();
+                        ctx.strokeStyle = tank.color[1];
+                        ctx.lineWidth = 1.5;
+                        ctx.moveTo(tank.x + 15, tank.y + 15);
+                        if (tank.direct == 2) {
+                            ctx.lineTo(tank.x, tank.y + 15)
+                        } else {
+                            ctx.lineTo(tank.x + 30, tank.y + 15)
+                        }
+                        ctx.stroke();
+                        ctx.closePath();
+                        break;
+                }
+            }
+        }
+        //定义一个公共坦克类
+        function Tank(x, y, color, direct) {//参数为坐标，颜色，方向
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.direct = direct;
+            this.speed = 5;//暂时设为固定值
+            this.isalive = true;//判断是否存活
+            //移动函数
+            //向下
+            this.movedown = function () {
+                this.y += this.speed;
+                this.direct = 0;
+            }
+            //向上
+            this.moveup = function () {
+                this.y -= this.speed;
+                this.direct = 1;
+            }
+            //向左
+            this.moveleft = function () {
+                this.x -= this.speed;
+                this.direct = 2;
+            }
+            //向右
+            this.moveright = function () {
+                this.x += this.speed;
+                this.direct = 3;
+            }
+        }
+        //定义一个自己的坦克类，从公共坦克类继承
+        function MyTank(x, y, color, direct) {
+            this.tank = Tank;
+            this.tank(x, y, color, direct);
+        }
+        //定义一个敌人的坦克类，同样从公共坦克类继承
+        function EnemyTank(x, y, color, direct) {
+            this.tank = Tank;
+            this.tank(x, y, color, direct);
+            this.count = 0;
+            //坦克移动
+            this.run = function run() {
+                switch (this.direct) {
+                    case 0:
+                        if (this.y + 30 < 500) {
+                            this.y += this.speed;
+                        }
+                        break;
+                    case 1:
+                        if (this.y > 0) {
+                            this.y -= this.speed;
+                        }
+                        break;
+                    case 2:
+                        if (this.x > 0) {
+                            this.x -= this.speed;
+                        }
+                        break;
+                    case 3:
+                        if (this.x + 30 < 500) {
+                            this.x += this.speed;
+                        }
+                        break;
+                }
+                if (this.count > Math.round(Math.random() * 100)) {
+                    this.direct = Math.round(Math.random() * 3);//随机生成方向
+                    this.count = 0;
+                }
+                this.count++;
+            }
+
+        }
+        //清理画布并重绘
+        function Clear() {
+            ctx.clearRect(0, 0, 500, 500);
+            draw(MyTank);
+            for (var i = 0; i < 5; i++) {
+                draw(enmeyTank[i]);
+            }
+
+        }
+        window.onkeydown = function (evt) {
+            switch (evt.keyCode) {
+                case 40:
+                    MyTank.movedown();
+                    break;
+                // 按下了“向左”箭头
+                case 37:
+                    MyTank.moveleft();
+                    break;
+                // 按下了“向右”箭头
+                case 39:
+                    MyTank.moveright();
+                    break;
+                // 按下了“向上”箭头
+                case 38:
+                    MyTank.moveup();
+                    break;
+            }
+            Clear();
+        }
+        window.setInterval("Clear()", 100);
+    </script>
+</body>
+
+</html>
