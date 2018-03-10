@@ -120,8 +120,16 @@
                 switch (this.direct) {
                     case 0:
                         for (var i = 0; i < 5; i++) {
-                            if (this.y + 30 == 500 || (Math.abs(this.x - enmeyTank[i].x) < 30 && enmeyTank[i].y - this.y <= 30)) {
-                                this.isgo = false;
+                            if (this.x != enmeyTank[i].x) {
+                                if (this.y + 30 == 500 || (Math.abs(this.x - enmeyTank[i].x) < 30 && enmeyTank[i].y > this.y && enmeyTank[i].y - this.y <= 35)) {
+                                    this.isgo = false;
+                                    break;
+                                } else if (Math.abs(this.x - MyTank.x) < 30 && MyTank.y > this.y && MyTank.y - this.y <= 35) {
+                                    this.isgo = false;
+                                    break;
+                                } else {
+                                    this.isgo = true;
+                                }
                             } else {
                                 this.isgo = true;
                             }
@@ -132,8 +140,16 @@
                         break;
                     case 1:
                         for (var i = 0; i < 5; i++) {
-                            if (this.y == 0 || (Math.abs(this.x - enmeyTank[i].x) < 30 && this.y - enmeyTank[i].y <= 30)) {
-                                this.isgo = false;
+                            if (this.x != enmeyTank[i].x) {
+                                if (this.y == 0 || (Math.abs(this.x - enmeyTank[i].x) < 30 && this.y > enmeyTank[i].y && this.y - enmeyTank[i].y <= 35)) {
+                                    this.isgo = false;
+                                    break;
+                                } else if (Math.abs(this.x - MyTank.x) < 30 && this.y > MyTank.y && this.y - MyTank.y <= 35) {
+                                    this.isgo = false;
+                                    break;
+                                } else {
+                                    this.isgo = true;
+                                }
                             } else {
                                 this.isgo = true;
                             }
@@ -144,8 +160,16 @@
                         break;
                     case 2:
                         for (var i = 0; i < 5; i++) {
-                            if (this.x == 0 || (Math.abs(this.y - enmeyTank[i].y) < 30 && this.x - enmeyTank[i].x <= 30)) {
-                                this.isgo = false;
+                            if (this.x != enmeyTank[i].x) {
+                                if (this.x == 0 || (Math.abs(this.y - enmeyTank[i].y) < 30 && this.x > enmeyTank[i].x && this.x - enmeyTank[i].x <= 35)) {
+                                    this.isgo = false;
+                                    break;
+                                } else if (Math.abs(this.y - MyTank.y) < 30 && this.x > MyTank.x && this.x - MyTank.x <= 35) {
+                                    this.isgo = false;
+                                    break;
+                                } else {
+                                    this.isgo = true;
+                                }
                             } else {
                                 this.isgo = true;
                             }
@@ -156,8 +180,16 @@
                         break;
                     case 3:
                         for (var i = 0; i < 5; i++) {
-                            if (this.x + 30 == 500 || (Math.abs(this.y - enmeyTank[i].y) < 30 && enmeyTank[i].x - this.x <= 30)) {
-                                this.isgo = false;
+                            if (this.x != enmeyTank[i].x) {
+                                if (this.x + 30 == 500 || (Math.abs(this.y - enmeyTank[i].y) < 30 && enmeyTank[i].x > this.x && enmeyTank[i].x - this.x <= 35)) {
+                                    this.isgo = false;
+                                    break;
+                                } else if (Math.abs(this.y - MyTank.y) < 30 && MyTank.x > this.x && MyTank.x - this.x <= 35) {
+                                    this.isgo = false;
+                                    break;
+                                } else {
+                                    this.isgo = true;
+                                }
                             } else {
                                 this.isgo = true;
                             }
@@ -193,7 +225,6 @@
             for (var i = 0; i < 5; i++) {
                 draw(enmeyTank[i]);
             }
-
         }
         window.onkeydown = function (evt) {
             switch (evt.keyCode) {
